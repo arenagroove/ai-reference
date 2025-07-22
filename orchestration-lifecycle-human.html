@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>AI Task Orchestration Lifecycle – Human-Centered Version</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="A plain-language explanation of how AI assistants handle tasks, from user prompt to output. Shows the full task lifecycle with simplified responsibilities.">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="AI Task Orchestration Lifecycle – Human-Centered Version">
+    <meta property="og:description" content="A clear, step-by-step view of how AI assistants handle tasks. Written for humans, not just developers.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://arenagroove.github.io/ai-reference/orchestration-lifecycle-human.html">
+    <!-- optional image -->
+    <meta property="og:image" content="https://arenagroove.github.io/ai-reference/preview.png">
+
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --surface: #ffffff;
+            --surface-alt: #f9fbfd;
+            --primary: #1e293b;
+            --secondary: #64748b;
+            --dim: #475569;
+            --muted: #334155;
+            --border: #d0d7de;
+            --accent-bg: #e8f1fc;
+            --hover-bg: #f1f5f9;
+            --font-base: "Barlow", system-ui, -apple-system, sans-serif;
+            --text-base: clamp(0.875rem, 0.825rem + 0.125vw, 1rem);
+            --space-md: clamp(1rem, 0.5rem + 1vw, 1.5rem);
+            --space-lg: clamp(1.5rem, 1rem + 1.5vw, 2.5rem);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-base);
+            background: var(--surface);
+            padding: var(--space-md);
+            color: var(--primary);
+            line-height: 1.6;
+            max-width: 90rem;
+            margin: 0 auto;
+            font-size: var(--text-base);
+        }
+
+        h1,
+        h2 {
+            text-align: center;
+            margin: 0;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        h1 {
+            font-size: clamp(1.75rem, 1.25rem + 1.5vw, 2.5rem);
+            margin-bottom: 0.5rem;
+        }
+
+        h2 {
+            font-size: clamp(1.125rem, 1rem + 0.5vw, 1.5rem);
+            color: var(--secondary);
+            margin-bottom: var(--space-md);
+            font-weight: 500;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 1rem;
+            margin-top: var(--space-lg);
+            border-radius: 0.75rem;
+            overflow: hidden;
+            background-color: var(--surface);
+            box-shadow: 0 0.125rem 0.375rem rgba(0, 0, 0, 0.04);
+        }
+
+        th,
+        td {
+            padding: 0.65rem 1rem;
+            text-align: left;
+            vertical-align: top;
+            border: thin solid var(--border);
+        }
+
+        tr:nth-child(even) {
+            background-color: var(--surface-alt);
+        }
+
+        tr:nth-child(odd) {
+            background-color: var(--surface);
+        }
+
+        tr:hover {
+            background-color: var(--hover-bg);
+        }
+
+        th {
+            background-color: var(--accent-bg);
+            font-weight: 600;
+            position: sticky;
+            top: -1px;
+            box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.06);
+        }
+
+        td:nth-child(1) {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        td:nth-child(2),
+        td:nth-child(3) {
+            color: var(--dim);
+        }
+
+        td:nth-child(4),
+        td:nth-child(5) {
+            color: var(--muted);
+            font-size: 0.93rem;
+            line-height: 1.5;
+        }
+
+        td+td {
+            border-left: thin solid var(--border);
+        }
+
+        @media (max-width: 900px) {
+            table {
+                display: block;
+                border-radius: 0.5rem;
+                overflow-x: visible;
+                box-shadow: none;
+            }
+
+            thead {
+                display: none;
+            }
+
+            tbody {
+                display: block;
+            }
+
+            tr {
+                display: block;
+                margin-bottom: 1rem;
+                background: var(--surface);
+                border-radius: 0.5rem;
+                border: thin solid var(--border);
+                box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.05);
+                padding: 0;
+            }
+
+            td {
+                display: flex;
+                border: none;
+                padding: 0.75rem 1rem;
+                align-items: flex-start;
+            }
+
+            td::before {
+                content: attr(data-label);
+                flex: 0 0 30%;
+                font-weight: 600;
+                color: var(--secondary);
+                padding-right: 0.75rem;
+            }
+
+            td>span {
+                flex: 1;
+                display: inline-block;
+                color: var(--primary);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>AI Task Orchestration Lifecycle – Human-Centered Version</h1>
+    <h2>Reference Model for Modern AI Systems (2025)</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Step</th>
+                <th>What Happens</th>
+                <th>Why This Step Matters</th>
+                <th>What the Assistant Needs to Know</th>
+                <th>How the Assistant Gets It Done</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>What You Ask For</td>
+                <td>You tell the assistant what you want done.</td>
+                <td>This is where everything starts.</td>
+                <td>Gets your request and any details you mention.</td>
+                <td>N/A</td>
+            </tr>
+            <tr>
+                <td>Clarifying the Request</td>
+                <td>The assistant makes sure it understands and fills in missing info by asking you or using what it knows.</td>
+                <td>Prevents confusion and makes sure it does the right thing.</td>
+                <td>Asks for more info or uses context to know exactly what you mean.</td>
+                <td>Breaks your request into simple steps or questions.</td>
+            </tr>
+            <tr>
+                <td>Planning the Steps</td>
+                <td>Figures out what to do first, second, and so on.</td>
+                <td>Keeps the process organized.</td>
+                <td>Knows what’s needed for each part and what comes next.</td>
+                <td>Writes instructions for each step or tool it uses.</td>
+            </tr>
+            <tr>
+                <td>Getting Things Done</td>
+                <td>Does the actual work, sometimes using other apps (like sending emails or checking your calendar).</td>
+                <td>Finishes the task you asked for.</td>
+                <td>Has the right info, files, or access for every little job.</td>
+                <td>Sends details to the right app or person at the right time.</td>
+            </tr>
+            <tr>
+                <td>Spotting Problems</td>
+                <td>Looks for missing info or mistakes and lets you know if there’s a problem.</td>
+                <td>Avoids errors or things being missed.</td>
+                <td>Notices anything wrong, missing, or that needs your help.</td>
+                <td>Asks questions for fixes or tells you if something went wrong.</td>
+            </tr>
+            <tr>
+                <td>Your Review</td>
+                <td>Gives you a chance to check the work or ask for changes before it’s final.</td>
+                <td>Makes sure you’re happy with the results.</td>
+                <td>Remembers your feedback and changes for next time.</td>
+                <td>Shows you a summary or a way to approve or edit the work.</td>
+            </tr>
+            <tr>
+                <td>Keeping Things Private</td>
+                <td>Protects your personal info and only shares what’s needed.</td>
+                <td>Keeps your trust and information safe.</td>
+                <td>Uses and shares only the details that are needed for each person/app.</td>
+                <td>Leaves out private details when sharing with others.</td>
+            </tr>
+            <tr>
+                <td>Using Other Tools</td>
+                <td>Works with your email, calendar, or other programs to get things done.</td>
+                <td>Lets the assistant handle bigger or more complex jobs.</td>
+                <td>Converts info into what each program needs.</td>
+                <td>Tells each tool what to do, in a way it understands.</td>
+            </tr>
+            <tr>
+                <td>Keeping Track</td>
+                <td>Keeps notes on what was done and when.</td>
+                <td>Lets you look back to see what happened or fix issues later.</td>
+                <td>Saves a simple record of steps, info, and timing.</td>
+                <td>N/A</td>
+            </tr>
+            <tr>
+                <td>Talking Like a Human</td>
+                <td>Writes summaries, messages, or emails in clear, friendly wording.</td>
+                <td>Makes the results easy for you or others to understand.</td>
+                <td>Uses the most important information from your request.</td>
+                <td>Writes messages or reports that are easy to read and understand.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script type="text/javascript">
+        document.addEventListener(
+            "DOMContentLoaded",
+            () => {
+                const tables = document.getElementsByTagName("table");
+                let i = tables.length;
+                let table, thead, tbody, headerCells, headers, h, rows, r, cells, c, cell, label, span;
+                while (i--) {
+                    table = tables[i];
+                    thead = table.tHead;
+                    if (!thead || !thead.rows[0]) continue;
+                    headerCells = thead.rows[0].cells;
+                    headers = new Array(headerCells.length);
+                    h = headerCells.length;
+                    while (h--) {
+                        headers[h] = headerCells[h].textContent.trim();
+                    }
+                    tbody = table.tBodies[0];
+                    if (!tbody) continue;
+                    rows = tbody.rows;
+                    r = rows.length;
+                    while (r--) {
+                        cells = rows[r].cells;
+                        c = cells.length;
+                        while (c--) {
+                            cell = cells[c];
+                            label = headers[c] || "";
+                            cell.setAttribute("data-label", label);
+                            if (
+                                !cell.firstElementChild ||
+                                cell.firstElementChild.tagName !== "SPAN"
+                            ) {
+                                span = document.createElement("span");
+                                span.textContent = cell.textContent;
+                                cell.textContent = "";
+                                cell.appendChild(span);
+                            }
+                        }
+                    }
+                }
+            }, { once: true, passive: true }
+        );
+    </script>
+
+</body>
+
+</html>
