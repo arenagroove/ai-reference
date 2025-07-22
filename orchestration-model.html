@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>AI Task Orchestration Lifecycle – Reference Model (2025)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Reference model showing lifecycle components and responsibilities for modern AI task orchestration. Designed for prompt engineering and context design alignment.">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="AI Task Orchestration Lifecycle – Reference Model (2025)">
+    <meta property="og:description" content="Structured view of the AI task orchestration lifecycle, roles, and responsibilities.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://arenagroove.github.io/ai-reference/orchestration-model.html">
+    <!-- optional image -->
+    <meta property="og:image" content="https://arenagroove.github.io/ai-reference/preview.png">
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --surface: #ffffff;
+            --surface-alt: #f9fbfd;
+            --primary: #1e293b;
+            --secondary: #64748b;
+            --dim: #475569;
+            --muted: #334155;
+            --border: #d0d7de;
+            --accent-bg: #e8f1fc;
+            --hover-bg: #f1f5f9;
+            --font-base: "Barlow", system-ui, -apple-system, sans-serif;
+            --text-base: clamp(0.875rem, 0.825rem + 0.125vw, 1rem);
+            --space-md: clamp(1rem, 0.5rem + 1vw, 1.5rem);
+            --space-lg: clamp(1.5rem, 1rem + 1.5vw, 2.5rem);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-base);
+            background: var(--surface);
+            padding: var(--space-md);
+            color: var(--primary);
+            line-height: 1.6;
+            max-width: 90rem;
+            margin: 0 auto;
+            font-size: var(--text-base);
+        }
+
+        h1,
+        h2 {
+            text-align: center;
+            margin: 0;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        h1 {
+            font-size: clamp(1.75rem, 1.25rem + 1.5vw, 2.5rem);
+            margin-bottom: 0.5rem;
+        }
+
+        h2 {
+            font-size: clamp(1.125rem, 1rem + 0.5vw, 1.5rem);
+            color: var(--secondary);
+            margin-bottom: var(--space-md);
+            font-weight: 500;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 1rem;
+            margin-top: var(--space-lg);
+            border-radius: 0.75rem;
+            overflow: hidden;
+            background-color: var(--surface);
+            box-shadow: 0 0.125rem 0.375rem rgba(0, 0, 0, 0.04);
+        }
+
+        th,
+        td {
+            padding: 0.65rem 1rem;
+            text-align: left;
+            vertical-align: top;
+            border: thin solid var(--border);
+        }
+
+        tr:nth-child(even) {
+            background-color: var(--surface-alt);
+        }
+
+        tr:nth-child(odd) {
+            background-color: var(--surface);
+        }
+
+        tr:hover {
+            background-color: var(--hover-bg);
+        }
+
+        th {
+            background-color: var(--accent-bg);
+            font-weight: 600;
+            position: sticky;
+            top: -1px;
+            box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.06);
+        }
+
+        td:nth-child(1) {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        td:nth-child(2),
+        td:nth-child(3) {
+            color: var(--dim);
+        }
+
+        td:nth-child(4),
+        td:nth-child(5) {
+            color: var(--muted);
+            font-size: 0.93rem;
+            line-height: 1.5;
+        }
+
+        td+td {
+            border-left: thin solid var(--border);
+        }
+
+        @media (max-width: 900px) {
+            table {
+                display: block;
+                border-radius: 0.5rem;
+                overflow-x: visible;
+                box-shadow: none;
+            }
+
+            thead {
+                display: none;
+            }
+
+            tbody {
+                display: block;
+            }
+
+            tr {
+                display: block;
+                margin-bottom: 1rem;
+                background: var(--surface);
+                border-radius: 0.5rem;
+                border: thin solid var(--border);
+                box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.05);
+                padding: 0;
+            }
+
+            td {
+                display: flex;
+                border: none;
+                padding: 0.75rem 1rem;
+                align-items: flex-start;
+            }
+
+            td::before {
+                content: attr(data-label);
+                flex: 0 0 30%;
+                font-weight: 600;
+                color: var(--secondary);
+                padding-right: 0.75rem;
+            }
+
+            td>span {
+                flex: 1;
+                display: inline-block;
+                color: var(--primary);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>AI Task Orchestration Lifecycle</h1>
+    <h2>Reference Model for Modern AI Systems (2025)</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Component</th>
+                <th>Function</th>
+                <th>Why It Matters</th>
+                <th>Context Engineering Responsibility</th>
+                <th>Prompt/Input Engineering Responsibility</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>User Prompt</td>
+                <td>The initial request or instruction.</td>
+                <td>Starts the process.</td>
+                <td>Captures user intent and relevant context (project, preferences, recent activity).</td>
+                <td>N/A</td>
+            </tr>
+            <tr>
+                <td>Engineered Instructions</td>
+                <td>System-generated clarifications and expansions of the task.</td>
+                <td>Ensures precision and clarity.</td>
+                <td>Adds clarifications, contextual details, and resolves ambiguities.</td>
+                <td>Structures instructions or prompts in model/tool-appropriate form.</td>
+            </tr>
+            <tr>
+                <td>Orchestration Layer</td>
+                <td>Plans, decomposes, and sequences workflow steps; manages agents/tools.</td>
+                <td>Maintains process integrity and efficiency.</td>
+                <td>Organizes and routes structured context for each sub-task and system.</td>
+                <td>Constructs step-specific prompts or structured inputs for LLMs, APIs, or agents.</td>
+            </tr>
+            <tr>
+                <td>Workflow Automation</td>
+                <td>Executes the planned steps and processes across systems and tools.</td>
+                <td>Accomplishes tasks efficiently.</td>
+                <td>Supplies tailored, step-specific context (permissions, files, configurations).</td>
+                <td>Formats commands, API calls, or tool-specific input as needed.</td>
+            </tr>
+            <tr>
+                <td>Error Handling</td>
+                <td>Detects failures, missing/conflicting information, and recovers or notifies.</td>
+                <td>Ensures robust, resilient operation.</td>
+                <td>Monitors and updates context to surface and address issues.</td>
+                <td>Generates clarifying queries or error messages for user or system intervention.</td>
+            </tr>
+            <tr>
+                <td>Feedback Loop</td>
+                <td>Incorporates user review, corrections, and iterative updates.</td>
+                <td>Ensures accurate, user-approved outcomes.</td>
+                <td>Maintains up-to-date context as changes and revisions are made.</td>
+                <td>Prepares review prompts, summaries, or update queries for ongoing workflow.</td>
+            </tr>
+            <tr>
+                <td>Security &amp; Privacy</td>
+                <td>Manages sensitive data, permissions, and access boundaries.</td>
+                <td>Ensures compliance and trust.</td>
+                <td>Redacts, restricts, or limits context shared with each system or recipient.</td>
+                <td>Applies relevant restrictions in crafting instructions or data payloads.</td>
+            </tr>
+            <tr>
+                <td>Tool/API Integration</td>
+                <td>Connects with external digital tools and services.</td>
+                <td>Extends workflow capabilities.</td>
+                <td>Translates and maps context into formats required by target APIs or tools.</td>
+                <td>Structures API calls or tool-specific input for integration steps.</td>
+            </tr>
+            <tr>
+                <td>Transparency &amp; Tracking</td>
+                <td>Logs actions, context changes, and decisions at each stage.</td>
+                <td>Supports auditability and diagnostics.</td>
+                <td>Continuously records context and workflow state for traceability.</td>
+                <td>N/A</td>
+            </tr>
+            <tr>
+                <td>LLM Output</td>
+                <td>Generates human-like communication (summaries, emails, etc.).</td>
+                <td>Ensures clarity and effectiveness.</td>
+                <td>Provides language models with relevant contextual background.</td>
+                <td>Crafts effective prompts for natural language generation tasks.</td>
+            </tr>
+        </tbody>
+    </table>
+    <script type="text/javascript">
+        document.addEventListener(
+            "DOMContentLoaded",
+            () => {
+                const tables = document.getElementsByTagName("table");
+                let i = tables.length;
+                let table, thead, tbody, headerCells, headers, h, rows, r, cells, c, cell, label, span;
+                while (i--) {
+                    table = tables[i];
+                    thead = table.tHead;
+                    if (!thead || !thead.rows[0]) continue;
+                    headerCells = thead.rows[0].cells;
+                    headers = new Array(headerCells.length);
+                    h = headerCells.length;
+                    while (h--) {
+                        headers[h] = headerCells[h].textContent.trim();
+                    }
+                    tbody = table.tBodies[0];
+                    if (!tbody) continue;
+                    rows = tbody.rows;
+                    r = rows.length;
+                    while (r--) {
+                        cells = rows[r].cells;
+                        c = cells.length;
+                        while (c--) {
+                            cell = cells[c];
+                            label = headers[c] || "";
+                            cell.setAttribute("data-label", label);
+                            if (
+                                !cell.firstElementChild ||
+                                cell.firstElementChild.tagName !== "SPAN"
+                            ) {
+                                span = document.createElement("span");
+                                span.textContent = cell.textContent;
+                                cell.textContent = "";
+                                cell.appendChild(span);
+                            }
+                        }
+                    }
+                }
+            }, { once: true, passive: true }
+        );
+    </script>
+
+</body>
+
+</html>
